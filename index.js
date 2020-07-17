@@ -29,12 +29,18 @@ and should return a number.
 For example, burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2*/
 
 
-function lunchSpecial(teacher, student, public) {
-  if (customerType === 'teacher') {
-    return (burger.price * .75)
+burger.discount = function(customerType) {
+  if(customerType === `Teacher`) {
+    this.price = this.price * .75
+  } else if(customerType === `Student` ) {
+    this.price = this.price * .75 
+  }
+  else {
+    this.price = this.price * .90
+  }
+  return this.price
 }
-}
-console.log(lunchSpecial('teacher' "Burger"));
+console.log(burger.discount(`Teacher`))
 
 
 
@@ -58,15 +64,17 @@ console.log(reviews[5].feedback)
 
 /* Task 4: Add a new rating with your (fictitious) opinions of the restaurant in the same format as the reviews above. */
 
-reviews.push({name:`Stephen`, rating: 5, feedback:`Great food and service!`
+reviews.push({name:`Stephen`, rating: 3.8573, feedback:`Good food and service!`
 })
+console.log(reviews);
 
 
 
 /* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
+reviews */
 
-
-
+reviews[7].feedback = `this place is chill with really cool people, great for getting work done on weekdays`
+console.log(reviews);
 
 
 
@@ -83,8 +91,10 @@ and should return a string in the format `{name} gave the restaurant a {rating},
  * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 */
 function getReviewByIndex(reviews, index) {
-    /* code here */
-  }
+  const review = reviews[index]
+  return `${review.name} gave the restaurant a ${review.rating}, and their feedback was: ${review.feedback} `  
+}
+console.log(getReviewByIndex(reviews, 1))
   
 
 
